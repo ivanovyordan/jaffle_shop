@@ -1,0 +1,11 @@
+id,user_id,order_date,status
+1,1,2018-01-01,returned
+2,3,2018-01-02,completed
+3,2,2018-01-04,completed
+4,1,2018-01-05,completed
+5,2,2018-01-05,completed
+6,3,2018-01-07,completed
+7,3,2018-01-09,completed
+8,3,2018-01-11,returned
+9,3,2018-01-12,completed
+10,2,2018-01-14,completed

@@ -24,3 +24,10 @@ models:
       materialized: table
       staging:
         materialized: view
+
+seeds:
+  jaffle_shop:
+    enabled: '{{ (target.name != "ci") | as_bool }}'
+
+    tests:
+      enabled: '{{ (target.name == "ci") | as_bool }}'
