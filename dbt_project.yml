@@ -24,6 +24,9 @@ models:
       materialized: table
       staging:
         materialized: view
+      tests:
+        enabled: '{{ (target.name == "ci") | as_bool }}'
+        materialized: ephemeral
 
 seeds:
   jaffle_shop:
