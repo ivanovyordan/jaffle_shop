@@ -4,6 +4,12 @@ models:
   - name: customers
     description: This table has basic information about a customer, as well as some derived facts based on a customer's orders
 
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('test_customers')
+          config:
+            enabled: '{{ (target.name == "ci") | as_bool }}'
+
     columns:
       - name: customer_id
         description: This is a unique identifier for a customer
@@ -31,6 +37,12 @@ models:
 
   - name: orders
     description: This table has basic information about orders, as well as some derived facts based on payments
+
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('test_orders')
+          config:
+            enabled: '{{ (target.name == "ci") | as_bool }}'
 
     columns:
       - name: order_id
