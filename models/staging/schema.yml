@@ -2,6 +2,13 @@ version: 2
 
 models:
   - name: stg_customers
+
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('test_stg_customers')
+          config:
+            enabled: '{{ (target.name == "ci") | as_bool }}'
+
     columns:
       - name: customer_id
         tests:
@@ -9,6 +16,13 @@ models:
           - not_null
 
   - name: stg_orders
+
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('test_stg_orders')
+          config:
+            enabled: '{{ (target.name == "ci") | as_bool }}'
+
     columns:
       - name: order_id
         tests:
@@ -20,6 +34,13 @@ models:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
 
   - name: stg_payments
+
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('test_stg_payments')
+          config:
+            enabled: '{{ (target.name == "ci") | as_bool }}'
+
     columns:
       - name: payment_id
         tests:
